@@ -17,7 +17,6 @@ import com.google.inject._
 import com.google.inject.name.Names
 import com.twitter.common.base.Supplier
 import com.twitter.common.zookeeper.{ Candidate, CandidateImpl, ZooKeeperClient, Group => ZGroup }
-import org.apache.log4j.Logger
 import org.apache.mesos.state.{ State, ZooKeeperState }
 import org.apache.zookeeper.ZooDefs
 
@@ -28,6 +27,7 @@ import mesosphere.marathon.io.storage.StorageProvider
 import mesosphere.marathon.state._
 import mesosphere.marathon.tasks.{ TaskIdUtil, TaskQueue, TaskTracker }
 import mesosphere.mesos.util.FrameworkIdUtil
+import mesosphere.util.Logging
 
 object ModuleNames {
   final val NAMED_CANDIDATE = "CANDIDATE"
@@ -36,9 +36,7 @@ object ModuleNames {
 }
 
 class MarathonModule(conf: MarathonConf, http: HttpConf, zk: ZooKeeperClient)
-    extends AbstractModule {
-
-  val log = Logger.getLogger(getClass.getName)
+    extends AbstractModule with Logging {
 
   def configure() {
     bind(classOf[MarathonConf]).toInstance(conf)

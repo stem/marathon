@@ -8,15 +8,14 @@ import mesosphere.marathon.api.MarathonRestModule
 import mesosphere.chaos.AppConfiguration
 import mesosphere.marathon.event.{ EventModule, EventConfiguration }
 import mesosphere.marathon.event.http.{ HttpEventModule, HttpEventConfiguration }
+import mesosphere.util.Logging
 import com.google.inject.AbstractModule
 import com.twitter.common.quantity.{ Time, Amount }
 import com.twitter.common.zookeeper.ZooKeeperClient
 import scala.collection.JavaConverters._
 import java.util.Properties
-import org.apache.log4j.Logger
 
-object Main extends App {
-  val log = Logger.getLogger(getClass.getName)
+object Main extends App with Logging {
   log.info(s"Starting Marathon ${BuildInfo.version}")
 
   lazy val zk: ZooKeeperClient = {

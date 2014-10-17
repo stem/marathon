@@ -10,6 +10,7 @@ import javax.servlet._
 import javax.servlet.http.{ HttpServletResponse, HttpServletRequest }
 import mesosphere.marathon.{ MarathonSchedulerService, ModuleNames }
 import org.apache.log4j.Logger
+import mesosphere.util.Logging
 
 /**
   * Servlet filter that proxies requests to the leader if we are not the leader.
@@ -19,9 +20,7 @@ import org.apache.log4j.Logger
   */
 class LeaderProxyFilter @Inject() (schedulerService: MarathonSchedulerService,
                                    @Named(ModuleNames.NAMED_LEADER_ATOMIC_BOOLEAN) leader: AtomicBoolean)
-    extends Filter {
-
-  val log = Logger.getLogger(getClass.getName)
+    extends Filter with Logging {
 
   def init(filterConfig: FilterConfig): Unit = {}
 

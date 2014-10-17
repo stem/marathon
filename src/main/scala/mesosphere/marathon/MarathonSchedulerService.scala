@@ -21,8 +21,8 @@ import mesosphere.marathon.tasks.TaskTracker
 import mesosphere.marathon.upgrade.DeploymentManager.DeploymentStepInfo
 import mesosphere.marathon.upgrade.DeploymentPlan
 import mesosphere.mesos.util.FrameworkIdUtil
+import mesosphere.util.Logging
 import mesosphere.util.PromiseActor
-import org.apache.log4j.Logger
 
 import scala.collection.immutable.Seq
 import scala.concurrent.duration.{ MILLISECONDS, _ }
@@ -43,7 +43,7 @@ class MarathonSchedulerService @Inject() (
     scheduler: MarathonScheduler,
     system: ActorSystem,
     migration: Migration,
-    @Named("schedulerActor") schedulerActor: ActorRef) extends AbstractExecutionThreadService with Leader {
+    @Named("schedulerActor") schedulerActor: ActorRef) extends AbstractExecutionThreadService with Leader with Logging {
 
   import mesosphere.util.ThreadPoolContext.context
 
@@ -60,8 +60,6 @@ class MarathonSchedulerService @Inject() (
     Duration(config.reconciliationInterval(), MILLISECONDS)
 
   val reconciliationTimer = new Timer("reconciliationTimer")
-
-  val log = Logger.getLogger(getClass.getName)
 
   val frameworkId = frameworkIdUtil.fetch
   frameworkId match {
