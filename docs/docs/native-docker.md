@@ -18,13 +18,13 @@ Docker version 1.0.0 or later installed on each slave node.
 
   <div class="alert alert-info">
     <strong>Note:</strong> All commands below assume `mesos-slave` is being run
-    as a service using the package provided by 
+    as a service using the package provided by
     <a href="http://mesosphere.com/2014/07/17/mesosphere-package-repositories/">Mesosphere</a>
   </div>
 
 1. Update slave configuration to specify the use of the Docker containerizer
   <div class="alert alert-info">
-    <strong>Note:</strong> The order of the parameters to `containerizers` is important. 
+    <strong>Note:</strong> The order of the parameters to `containerizers` is important.
     It specifies the priority used when choosing the containerizer to launch
     the task.
   </div>
@@ -41,10 +41,6 @@ Docker version 1.0.0 or later installed on each slave node.
     ```
 
 3. Restart `mesos-slave` process to load the new configuration
-
-### Configure marathon
-
-1. Increase the marathon [command line option]({{ site.baseurl }}/docs/command-line-flags.html") `--task_launch_timeout` to at least the executor timeout you set on your slaves in the previous step.
 
 ### Resources
 
@@ -194,7 +190,7 @@ and execute `echo hello`:
 
 ```json
 {
-    "id": "inky", 
+    "id": "inky",
     "container": {
         "docker": {
             "image": "mesosphere/inky"

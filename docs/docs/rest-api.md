@@ -155,7 +155,7 @@ Each name must be at least 1 character and may
 only contain digits (`0-9`), dashes (`-`), dots (`.`), and lowercase letters
 (`a-z`). The name may not begin or end with a dash.
 
-The allowable format is represented by the following regular expression 
+The allowable format is represented by the following regular expression
 `^(([a-z0-9]|[a-z0-9][a-z0-9\\-]*[a-z0-9])\\.)*([a-z0-9]|[a-z0-9][a-z0-9\\-]*[a-z0-9])$`
 
 ##### args
@@ -1036,8 +1036,8 @@ Content-Type: text/plain
 Server: Jetty(8.y.z-SNAPSHOT)
 Transfer-Encoding: chunked
 
-my-app  19385 agouti.local:31336  agouti.local:31364  agouti.local:31382 
-my-app  11186 agouti.local:31337  agouti.local:31365  agouti.local:31383 
+my-app  19385 agouti.local:31336  agouti.local:31364  agouti.local:31382
+my-app  11186 agouti.local:31337  agouti.local:31365  agouti.local:31383
 {% endhighlight %}
 
 #### DELETE `/v2/apps/{appId}/tasks`
@@ -1307,7 +1307,7 @@ The JSON format of a group resource is as follows:
       "apps": [{
         "id": "app1",
         "cmd": "someExecutable"
-      }, 
+      },
       {
         "id": "app2",
         "cmd": "someOtherExecutable"
@@ -1375,7 +1375,7 @@ The JSON format of a group resource is as follows:
       "apps": [{
         "id": "app1",
         "cmd": "someExecutable"
-      }, 
+      },
       {
         "id": "app2",
         "cmd": "someOtherExecutable"
@@ -1762,8 +1762,8 @@ Content-Type: text/plain
 Server: Jetty(8.y.z-SNAPSHOT)
 Transfer-Encoding: chunked
 
-my-app  19385 agouti.local:31336  agouti.local:31364  agouti.local:31382 
-my-app2  11186 agouti.local:31337  agouti.local:31365  agouti.local:31383 
+my-app  19385 agouti.local:31336  agouti.local:31364  agouti.local:31382
+my-app2  11186 agouti.local:31337  agouti.local:31365  agouti.local:31383
 {% endhighlight %}
 
 ### Deployments
@@ -2104,8 +2104,7 @@ Server: Jetty(8.y.z-SNAPSHOT)
         "mesos_role": null,
         "mesos_user": "root",
         "reconciliation_initial_delay": 30000,
-        "reconciliation_interval": 30000,
-        "task_launch_timeout": 60000
+        "reconciliation_interval": 30000
     },
     "name": "marathon",
     "version": "0.7.0-SNAPSHOT",
